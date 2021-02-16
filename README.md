@@ -5,10 +5,9 @@ https://doi.org/10.1038/s41545-021-00101-w
 ## What is this?
 
 This is an open access full-text version of the article detailed below. The
-original source file is included alongside rich and plain text versions. [There
-is a major problem with the lifespan of
-references](https://davidmytton.blog/dead-references/), so copies of all
-citations are also included in their state when originally accessed.
+original LaTeX source file is included. [There is a major problem with the
+lifespan of references](https://davidmytton.blog/dead-references/), so copies
+of all citations are also included in their state when originally accessed.
 
 ## Abstract
 
