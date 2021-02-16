@@ -1,0 +1,44 @@
+\documentclass{article}
+% pgfplots: Graphing library
+\usepackage{pgfplots}
+
+\begin{document}
+
+
+\begin{figure}
+\begin{tikzpicture}
+\begin{axis}[
+    x tick label style={
+		/pgf/number format/1000 sep=},
+    xtick={
+        2016,
+        2017,
+        2018,
+        2019
+    },
+    xlabel=Fiscal Year,
+    ylabel=Water consumption (billion litres),
+    legend style={
+	    anchor=north,
+    },
+]
+% Google
+\addplot+ [
+    sharp plot,
+]
+coordinates {
+    (2016, 9.5) (2017, 11.4) (2018, 15.8)
+};
+% Microsoft
+\addplot+ [
+    sharp plot,
+]
+coordinates {
+    (2017,1.9) (2018, 3.6) (2019, 4.2)
+};
+\legend{Google, Microsoft}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\end{document}

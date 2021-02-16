@@ -1,0 +1,1156 @@
+\documentclass{article}
+% authblk: Handle author institutions
+\usepackage{authblk}
+% hyperref: Link URLs (no colour) and handle line breaks
+\usepackage{hyperref}
+\hypersetup{
+    hidelinks,
+}
+\def\UrlBreaks{\do\/\do-}
+% lineno: Add line numbers
+\usepackage{lineno}
+
+\begin{document}
+
+\linenumbers
+
+\title{Data centre water consumption}
+\author[1]{David Mytton\thanks{david@davidmytton.co.uk}}
+\affil[1]{Centre for Environmental Policy, Imperial College London, UK}
+
+\date{November 2020}
+
+\maketitle
+
+%TC:ignore
+\begin{abstract}
+    The Information Communication Technology (ICT) sector will
+    experience huge growth over the coming years, with 29.3 billion devices
+    expected online by 2030, up from 18.4 billion in 2018. To reliably support
+    the online services used by these billions of users, data centres have been
+    built around the world to provide the millions of servers they contain with
+    access to power, cooling, and internet connectivity. Whilst the energy
+    consumption of these facilities regularly receives mainstream and academic
+    coverage, analysis of their water consumption is scarce. Data centres
+    consume water directly for cooling, in some cases 57\% sourced from potable
+    water, and indirectly through the water requirements of non-renewable
+    electricity generation. Although in the US, data centre water consumption
+    (1.7 billion litres/day) is small compared to total water consumption
+    (1,218 billion litres/day), there are issues of transparency with less than
+    a third of data centre operators measuring water consumption. This paper
+    examines the water consumption of data centres, the measurement of that
+    consumption, highlights the lack of data available to assess water
+    efficiency, and discusses and where the industry is going in attempts to
+    reduce future consumption.
+\end{abstract}
+%TC:endignore
+
+\section*{Introduction}
+
+The Information Communication Technology (ICT) sector is expecting huge growth
+over the coming years. By 2023, 5.3 billion people will have internet access,
+up from 3.9 billion in 2015 \cite{cisco_cisco_2020}. By then, 29.3 billion
+devices will be connected to the internet (up from 18.4 billion in 2018), with
+access speeds doubling between 2018 and 2023 to a global average of 110 Mbps
+\cite{cisco_cisco_2020}. More people having faster access to online services
+means internet traffic will double by 2022 \cite{kamiya_data_2020}.
+
+To reliably serve these billions of users, internet properties rely on millions
+of dedicated computers called servers. These servers are located in data
+centres which provide reliable power, cooling, and internet access. Around 40\%
+of servers are in small data centres \cite{ganeshalingam_shining_2017} such as
+cabinets in an office side room, but newer facilities are increasingly
+"hyperscale" warehouses, hundreds of thousands of square meters in size, and
+run by the big three cloud vendors (Amazon Web Services, Google Cloud Platform,
+Microsoft Azure) \cite{shehabi_united_2016}.
+
+The energy consumption of data centres regularly receives attention in both the
+academic and mainstream press. Despite the ICT sector being responsible for
+some of the largest purchases of renewable energy \cite{us_epa_green_2020},
+there remains considerable uncertainty about total data centre energy
+consumption. Estimates for 2018 range from 200 terawatt hours (TWh)
+\cite{masanet_recalibrating_2020} to 500 TWh \cite{bashroush_beyond_2020}. Some
+extreme analyses even suggest energy consumption could quadruple by 2030
+\cite{andrae_global_2015} whereas other estimates show energy growth plateauing
+\cite{masanet_recalibrating_2020}. Regardless of the precise number, data
+centre energy is an important topic of public interest. However it is just one
+aspect of the environmental footprint of ICT. A less well understood factor is
+water consumption.
+
+Crucial for industry and agriculture, the availability and quality of water is
+a growing global concern \cite{unesco_united_2020}. Projections suggest that
+water demand will increase by 55\% between 2000 and 2050 due to growth from
+manufacturing (+400\%), thermal power generation (+140\%) and domestic use
+(+130\%) \cite{oecd_oecd_2012}. ICT is another sector contributing to that
+demand.
+
+In Fiscal Year 2018 (FY18), Google reported 15.8 billion litres of water
+consumption, up from 11.4 billion litres in FY17
+\cite{google_environmental_2020}. Similarly with Microsoft who reported using
+3.6 billion litres in FY18, up from 1.9 billion litres in FY17
+\cite{microsoft_2019_2020} (Figure \ref{figure:cloud-water-use}). Offices make up
+some of this total, but data centres also use water.
+
+This paper examines the water consumption of data centres, how that
+consumption is measured by the ICT sector, and considers where the industry is
+going in attempts to reduce future water consumption.
+
+\section*{Data centre water use}
+
+Total water consumption in the US in 2015 was 1,218 billion litres per day, of
+which thermoelectric power used 503 billion litres, irrigation used 446 billion
+litres, and 147 billion litres per day went to supply 87\% of the US population
+with potable water \cite{dieter_estimated_2018}.
+
+Data centres consume water across two main categories: indirectly through
+electricity generation (traditionally thermoelectric power), and directly
+through cooling. In 2014, a total of 626 billion litres of water use was
+attributable to data centres \cite{shehabi_united_2016}. This is a small
+proportion in the context of such high national figures, however data centres
+compete with other users for access to local resources. A medium-sized data
+centre (15 megawatts) uses as much water as three average-sized hospitals, or
+more than two 18-hole golf courses \cite{fitzgerald_data_2015}. Some progress
+has been made with using recycled and non-potable water, but from the limited
+figures available \cite{digital_realty_environmental_2019} some data centre
+operators are drawing more than half of their water from potable sources
+(Figure \ref{figure:digital-realty-water-source}). This has been the source of
+considerable controversy in areas of water stress and highlights the importance
+of understanding how data centres use water.
+
+This section considers these two categories of data centre water consumption.
+
+\subsection*{Water use in electricity generation}
+
+Water requirements are measured based on withdrawal or consumption. Consumption
+refers to water lost (usually through evaporation) whereas water withdrawal
+refers to water taken from a source such as natural surface water, underground
+water, reclaimed water, or treated potable water, and then later returned to
+the source \cite{pan_cooling_2018}.
+
+Power plants generate heat using fossil-fuels such as coal and gas, or nuclear
+fission, to convert water into steam which rotates a turbine, thereby
+generating electricity. Water is a key part of this process, which involves
+pre-treating the source water to remove corroding contaminants, and
+post-treatment to remove brines. Once heated into steam to rotate the turbine,
+water is lost through evaporation, discharged as effluent, or recirculated;
+sometimes all three \cite{pan_cooling_2018}.
+
+The US average water intensity for electricity generation for 2015 was 2.18
+litres per kilowatt hour (L/kWh) \cite{lee_regional_2018}, but fuel and
+generator technology type have a major impact on cooling water requirements.
+For example, a dry air cooling system for a natural gas combined cycle
+generator consumes and withdraws 0.00 to 0.02 L/kWh whereas a wet cooling (open
+recirculating) system for a coal steam turbine consumes 0.53 L/kWh and
+withdraws 132.5 L/kWh. Efficiency varies significantly, with consumption
+ranging from 0.00 to 4.4 L/kWh and withdrawal ranging from 0.31 to 533.7 L/kWh
+depending on the system characteristics \cite{pan_cooling_2018}.
+
+Hydropower systems also use large volumes of water despite being considered a
+cleaner source of electricity. Water evaporation from open reservoirs is a
+major source of losses, particularly in dry regions and where water is not
+pumped back into the reservoir or passed onto downstream users. The US national
+average water consumption for hydropower is 16.8 L/kWh compared to 1.25 L/kWh
+for thermoelectricity \cite{lee_regional_2018}.
+
+With the majority of generation still from fossil-fuels
+\cite{iea_electricity_2019}, the transition to renewables is important for both
+carbon and water intensity. Only solar and wind energy do not involve water in
+generation, yet both still consume water in the manufacturing and construction
+processes \cite{unesco_united_2020}. Estimates suggest that by 2030, moving to
+wind and solar energy could reduce water withdrawals by 50\% in the UK, 25\% in
+the US, Germany, and Australia, and 10\% in India \cite{irena_renewable_2015}.
+
+In the data centre sector, Google and Microsoft are leading the shift to
+renewables. Between 2010 and 2018, the number of servers increased six times,
+network traffic increased ten times, and storage capacity increased by twenty
+five times, yet energy consumption has only grown by 6\%
+\cite{masanet_recalibrating_2020}. A major contributor to this has been the
+migration to cloud computing, as of 2020 estimated to be a \$236 billion market
+\cite{adams_forrester_2017} and responsible for managing 40\% of servers
+\cite{shehabi_united_2016}.
+
+Due to their size, the cloud providers have been able to invest in highly
+efficient operations. Although often criticised as a metric of efficiency
+\cite{brady_case_2013}, an indicator of this can be seen through low Power
+Usage Effectiveness (PUE) ratios. PUE is a measure of how much of energy input
+is used by the ICT equipment as opposed to the data centre infrastructure such
+as cooling \cite{iso_isoiec_nodate}, defined as:
+
+\begin{equation}
+    PUE = \frac{\textrm{Data Centre Total Energy Consumption}}{\textrm{ICT
+    Equipment Energy Consumption}}
+\end{equation}
+
+PUE is relevant to understanding indirect water consumption because it
+indicates how efficient a particular facility is at its primary purpose:
+operating ICT equipment. This includes servers, networking, and storage
+devices. An ideal PUE of 1.0 would mean 100\% of the energy going to power
+useful services running on the ICT equipment rather than wasted on cooling,
+lighting, and power distribution. Water is consumed indirectly through the
+power generation, so more efficient use of that power means more efficient use
+of water.
+
+Traditional data centres have reported PUEs reducing from 2.23 in 2010 to 1.93
+in 2020 \cite{masanet_recalibrating_2020}. In contrast, the largest
+"hyperscale" cloud providers report PUEs ranging from 1.25 to 1.18. Some report
+even better performance, such as Google with a Q2 2020 fleet wide trailing
+twelve-month PUE of 1.10 \cite{google_efficiency_2020}.
+
+As data centre efficiency reaches such levels, further gains are more
+difficult. This has already started to show up in plateauing PUE numbers
+\cite{lawrence_data_2020} which means the expected increased in future usage
+may soon be unable to be offset by efficiency improvements
+\cite{shehabi_data_2018}. As more equipment is deployed, and more data centres
+are needed to house that equipment, energy demand will increase. If that energy
+is not sourced from renewables, indirect water consumption will increase.
+
+Power generation source is therefore a key element in understanding data centre
+water consumption, with PUE an indicator of how efficiently that power is used,
+but it is just the first category. Direct water use is also important - all
+that equipment needs cooling, which in some older facilities can consume up to
+30\% of total data centre energy demand \cite{iyengar_reducing_2010,
+ebrahimi_review_2014,capozzoli_cooling_2015}.
+
+\subsection*{Water use in data centre cooling}
+
+ICT equipment generates heat and so most devices must have a mechanism to
+manage their temperature. Drawing cool air over hot metal transfers heat energy
+to that air, which is then pushed out into the environment. This works because
+the computer temperature is usually higher than the surrounding air.
+
+The same process occurs in data centres, just at a larger scale. ICT equipment
+is located within a room or hall, heat is ejected from the equipment via an
+exhaust, and that air is then extracted, cooled, and recirculated. Data centre
+rooms are designed to operate within temperature ranges of 20-22C, with a lower
+bound of 12C \cite{miller_energy_2011}. As temperatures increase, equipment
+failure rates also increase, although not necessarily linearly
+\cite{miller_intel_2008}.
+
+There are several different mechanisms for data centre cooling
+\cite{ebrahimi_review_2014,capozzoli_cooling_2015}, but the general approach
+involves chillers reducing air temperature by cooling water - typically to
+7-10C \cite{frizziero_rethinking_2016} - which is then used as a heat transfer
+mechanism. Some data centres use cooling towers where external air travels
+across a wet media so the water evaporates. Fans expel the hot, wet air and the
+cooled water is recirculated \cite{heslin_ignore_2016}. Other data centres use
+adiabatic economisers where water sprayed directly into the air flow, or onto a
+heat exchange surface, cools the air entering the data centre
+\cite{frizziero_why_2018}. With both techniques, the evaporation results in
+water loss. A small 1 megawatt (MW) data centre using one of these types of
+traditional cooling can use around 25.5 million litres of water per year
+\cite{heslin_ignore_2016}.
+
+Cooling the water is the main source of energy consumption. Raising the chiller
+water temperature from the usual 7-10C to 18-20C - can reduce expenses by 40\%
+due to the reduced temperature difference between the water and the air. Costs
+depend on the seasonal ambient temperature of the data centre location. In
+cooler regions, less cooling is required and instead free air cooling can draw
+in cold air from the external environment \cite{frizziero_rethinking_2016}.
+This also means smaller chillers can be used, reducing capital expenditure by
+up to 30\% \cite{frizziero_rethinking_2016}. Both Google
+\cite{miller_googles_2009} and Microsoft \cite{miller_microsofts_2009} have
+built data centres without chillers, but this is difficult in hot regions
+\cite{david_experimental_2012}.
+
+\section*{Measuring data centre water use}
+
+In the same way that PUE represents data centre energy consumption, Water Usage
+Effectiveness ($WUE$) is a metric for data centre water consumption
+\cite{patterson_water_2011}, defined as:
+
+\begin{equation}
+    WUE = \frac{\textrm{Annual Site Water Usage}}{\textrm{ICT Equipment
+    Energy}}
+\end{equation}
+
+The unit is L/kWh. However, this offers a limited view because it only includes
+the water consumed on-site. As discussed above, water from electricity
+generation is also important for understanding the total data centre footprint.
+A similar metric was published in the academic literature
+\cite{sharma_water_2009}, but the industry also proposed $WUE_\textrm{source}$
+at the same time as $WUE$ \cite{patterson_water_2011}, defined as:
+
+\begin{equation}
+    WUE_\textrm{source} = \frac{\textrm{Annual Source Energy Water Usage}+
+    \textrm{Annual Site Water Use}}{\textrm{ICT Equipment Energy}}
+\end{equation}
+
+The availability of water intensity factors to calculate Annual Source Energy
+Water Usage is a limitation of this metric. Some countries publish figures,
+such as the US National Renewable Energy Laboratory
+\cite{torcellini_consumptive_2003}, but there is large variance across and
+within technologies \cite{macknick_operational_2012}, and they become out of
+date as the grid decarbonises \cite{peck_quantification_2017}.
+
+This may be one reason why less than a third of data centre operators track any
+water metrics and water conservation is ranked as a low priority
+\cite{heslin_ignore_2016}. Facebook is one of the few companies to report
+$WUE$, even publishing real-time online dashboards for their Lulea
+\cite{facebook_lulea_2020}, Forest City \cite{facebook_forest_2020} and
+Prineville \cite{facebook_prineville_2020} data centres. None of the top three
+cloud vendors (by usage \cite{flexera_rightscale_2019}) publish water
+efficiency metrics, although Google \cite{google_environmental_2020} and
+Microsoft \cite{microsoft_2019_2020} both report total water consumption
+(Figure \ref{figure:cloud-water-use}).
+
+\section*{Cloud vendor water use}
+
+The move to cloud computing is a major reason behind claims about flattening
+data centre energy usage over the last few years
+\cite{masanet_recalibrating_2020}. In the past, organisations had to buy
+physical equipment and lease space to deploy it in a data centre. With cloud
+computing, those physical resources still exist but are instead owned and
+operated by the cloud vendor, and split into virtual units sold by the second,
+hour, or per user request. This means resources can be more efficiently
+allocated and the cloud vendors can afford to spend money on improving
+efficiency that would otherwise not be worth the cost to companies operating at
+smaller scale. However, it also means customers no longer have visibility into
+the resource consumption behind their purchases, thereby making it impossible
+to assess the environmental impact of their cloud use
+\cite{mytton_assessing_2020}.
+
+Google and Microsoft have started to compete on their sustainability
+credentials \cite{mytton_fighting_2020} and both have been reporting detailed
+environmental metrics for several years (Figure \ref{figure:cloud-water-use}).
+However, neither company attributes their water consumption to data centres,
+and their figures only represent direct water usage, ignoring water used in
+electricity generation. Breakdowns of water source are absent, which has proven
+controversial when they compete for stressed potable sources.
+
+Google considers water use to be a trade secret and has engaged in tactics to
+prevent the release of information about how it works with local utilities
+\cite{sattiraju_google_2020}. In South Carolina, Google has free access to pump
+1.9 million litres per day due to how state law regulates access to aquifers
+\cite{petersen_googles_2017}. This became controversial with local residents
+and conservation groups with an application to triple the daily volume
+\cite{mccammon_google_2017} because at the same time the local utility was
+asked to reduce its withdrawal by 57\% over the following four years
+\cite{sattiraju_google_2020}. Google has worked on water conservation projects
+in the past \cite{brown_helping_2012}, and is leading the industry on energy
+projects such as access to renewable electricity \cite{pichai_our_2020}, so its
+aggressive approach to water use seems at odds with its overall sustainability
+strategy.
+
+Amazon plans to be carbon neutral by 2040 \cite{amazon_amazon_2019} (Google and
+Microsoft achieved this in 2007 and 2012 respectively) and has lagged behind on
+when it plans to match all its electricity consumption with 100\% renewables
+(by 2025 \cite{amazon_amazon_2020}). Amazon's ecommerce and logistics business
+mean it has a much larger environmental footprint which is not directly
+comparable with Google or Microsoft, but it could still break out figures for
+its Amazon Web Services cloud business. Instead it offers only vague statements
+about its water consumption \cite{amazon_reducing_2019}. Meanwhile, Microsoft
+announced its intention to replenish more water than it consumes by 2030
+\cite{smith_microsoft_2020}. Amazon stands out for its lack of transparency.
+
+\section*{Alternative water sources}
+
+Where data centres own and operate the entire facility, there is more
+flexibility for exploring alternative source of water, and different techniques
+for keeping ICT equipment cool.
+
+Google's Hamina data centre in Finland has used sea water for cooling since it
+opened in 2011 \cite{judge_google_2019}. Using existing pipes from when the
+facility was a paper mill, the cold sea water is pumped into heat exchangers
+within the data centre. The sea water is kept separate from the freshwater
+which circulates within the heat exchangers. When expelled, the hot water is
+mixed with cold sea water before being returned to the sea
+\cite{levy_where_2012}.
+
+Despite Amazon's poor environmental efforts in comparison to Google and
+Microsoft, they are expanding their use of non-potable water
+\cite{amazon_reducing_2019}. Data centre operators have a history of using
+drinking water for cooling, and most source their water from reservoirs because
+access to rainfall, grey water, and surface water is seen as unreliable
+\cite{heslin_ignore_2016}. Digital Realty, a large global data centre operator,
+is one of the few companies publishing a water source breakdown (Figure
+\ref{figure:digital-realty-water-source}). Reducing this proportion is
+important because the processing and filtering requirements of drinking water
+increase the lifecycle energy footprint. The embodied energy in the
+manufacturing of any chemicals required for filtering must also be considered.
+This increases the overall carbon footprint of a data centre.
+
+Amazon claims to be the first data centre operator approved for using recycled
+water for direct evaporative cooling. Deployed in their data centres in
+Northern Virginia and Oregon, they also have plans to retrofit facilities in
+Northern California \cite{amazon_reducing_2019}. However, Digital Realty faced
+delays when working with a local utility in Los Angeles because they needed a
+new pipeline to pump recycled water to its data centres
+\cite{fitzgerald_data_2015}.
+
+Microsoft's Project Natick is a different attempt to tackle this challenge by
+submerging a sealed data centre under water. Tests concluded off the Orkney
+Islands in 2020 showed that 864 servers could run reliably for two years with
+cooling provided by the ambient sea temperature, and electricity from local
+renewable sources \cite{roach_microsoft_2020}. The potential to make use of
+natural cooling is encouraging, however the small scale of these systems could
+mean higher costs, making them appropriate only for certain high-value use
+cases.
+
+ICT equipment is deployed in racks, aligned in rows, within a data centre room.
+Traditional cooling manages the temperature of the room as a whole, however
+this is not as efficient as more targeted cooling. Moving from cooling the
+entire room to focused cooling of a row of servers, or even a specific rack,
+can achieve energy savings of up to 29\% \cite{moazamigoodarzi_influence_2019},
+and is the subject of a Google patent granted in 2012
+\cite{hamburgen_modular_2012}.
+
+This is becoming necessary because of the increase in rack density. Microsoft
+is deploying new hardware such as the Nvidia DGX-2 Graphics Processing Unit
+that consumes 10 kW for machine learning workloads, and existing cooling
+techniques are proving insufficient \cite{russinovich_inside_2020}. Using
+low-boiling-point liquids is more efficient than using ambient air cooling
+\cite{meijer_cooling_2010} and past experiments have shown that a
+super-computing system can transfer 96\% of excess heat to water
+\cite{ellsworth_overview_2012}, with 45\% less heat transferred to the ambient
+air \cite{ellsworth_energy_2010}. Microsoft is now testing these techniques in
+its cloud data centres \cite{russinovich_inside_2020}.
+
+These projects show promise for the future, but there are still gains to be had
+from existing infrastructure. Google has used its AI expertise to reduce energy
+use from cooling by up to 40\% through hourly adjustments to environmental
+controls based on predicted weather, internal temperatures and pressure within
+its existing data centres \cite{evans_deepmind_2016,gao_machine_2017}. Another
+idea is to co-locate data centres and desalination facilities so they can share
+energy intensive operations \cite{hamilton_data_2014}. That most of the
+innovation is now led by the big three cloud providers demonstrates their scale
+advantage. By owning, managing, and controlling the entire value-chain from
+server design through to the location of the building, cloud vendors have been
+able to push data centre efficiency to levels impossible for more traditional
+operators to achieve.
+
+However, only the largest providers build their own data centres, and often
+work with other data centre operators in smaller regions. For example, as of
+the end of 2020, Google lists 21 data centres \cite{google_locations_2020},
+publishes PUE for 17 \cite{google_efficiency_2020}, but has over 100 Points of
+Presence (PoPs) around the world \cite{google_edge_2020}. These PoPs are used
+to provide services closer to its users, for example to provide faster load
+times when streaming YouTube videos \cite{loh_click_2019}. Whilst Google owns
+the equipment deployed in the PoP, it does not have the same level of control
+as it does when it designs and builds its own data centres. Even so, Google has
+explored efficiency improvements such as optimising air venting, increasing
+temperature from 22C to 27C, deployed plastic curtains to establish cool aisles
+for more heat sensitive equipment, and improved the design of air conditioning
+return air flow. In a case study for one its PoPs, this work was shown to
+reduce PUE from 2.4 to 1.7 and saved \$67,000 USD/year in energy for a cost of
+\$25,000 USD \cite{google_pop_2011}.
+
+\section*{Conclusions}
+
+Data centre water efficiency deserves greater attention. Annual reports show
+water consumption for cooling directly paid for by the operator, so there is an
+economic incentive to increase efficiency. As the total energy share of cooling
+has fallen with improving PUEs, the focus has been on electricity consumption,
+and so water has been a low priority for the industry. However, the largest
+contributor to the water footprint of a data centre is electricity generation.
+Without metrics like $WUE_\textrm{source}$ this is invisible.
+
+Moving to the cloud is more efficient than running physical infrastructure in
+owned or leased facilities, but transparency remains a major issue
+\cite{mytton_hiding_2020}. Microsoft and Google both produce detailed
+environmental reports, but only in aggregate. The largest cloud provider,
+Amazon, publishes almost nothing at all. Facebook is an exception, but as they
+do not sell cloud services, third parties are unable to take advantage of their
+infrastructure in the same way they can buy computing services from Amazon,
+Google, or Microsoft.
+
+With energy consumption and carbon emissions this is starting to change. Google
+and Microsoft publish their Greenhouse Gas emissions and Microsoft has
+developed a Sustainability Calculator so customers can calculate the emissions
+associated with their cloud resources \cite{joppa_progress_2020}. Part of the
+reason behind this is likely to be pressure from customers due to legal
+reporting requirements now imposed on the largest public companies
+\cite{european_commission_eu_2020,uk_government_streamlined_2018}. However,
+there are no such requirements for water.
+
+Google and Microsoft are keen to publicise their renewable energy projects,
+offset purchases, renewables matching, and energy efficiency improvements. Both
+companies publish water consumption figures (Microsoft also includes
+withdrawal) but the same level of detail provided about energy projects is
+lacking for water. This is an opportunity for data centre operators to publish
+more than just their PUE ratios, a metric which was never intended to compare
+efficiency between facilities \cite{van_de_voort_analysis_2017} yet has become
+standard practice to report \cite{zoie_analysis_2017}.
+
+The industry has already taken the first step by defining water metrics. Now
+they need to use them. Operators and cloud vendors should calculate and publish
+$WUE_\textrm{source}$ alongside PUE. A breakdown of water source, such as the
+one published by Digital Realty \cite{digital_realty_environmental_2019}, is
+also important. Using potable water diverts valuable resources away from the
+local community, a situation which is likely to get worse as water scarcity
+becomes more of a problem. This would improve transparency and move the
+industry from thinking mainly about use-stage energy to considering the
+complete lifecycle environmental impacts of their business.
+
+Once metrics are introduced internally and released publicly, data centre
+operators can work to improve. This starts with buying renewable energy so that
+the water intensity of the energy is as low as possible. Free cooling should be
+preferred but where water is necessary for cooling, recycled and non-potable
+water must make up the majority of withdrawals. Direct liquid, rack, or room
+cooling technologies offer greatest efficiency but require the ICT equipment
+owner to also own, or closely work with the data centre.
+
+Corporate water stewardship is growing in importance \cite{yu_drivers_2020},
+yet it is difficult to understand the current situation due to the lack of
+reporting. Google and Microsoft are leading in renewable energy, but even they
+are secretive about their water resource management. It is easy to criticise
+Amazon's lack of transparency but they are not alone - the entire data centre
+industry suffers from a lack of transparency. However, they will only report
+data when their customers ask for it. Organisations who lease space in data
+centres must take responsibility by asking not just for PUE metrics, but also
+to ask about water consumption, and make both part of their vendor selection
+criteria. Considering how much data is stored in data centres, it is ironic how
+little data there is available about how they operate.
+
+%TC:ignore
+\section*{Acknowledgements} None.
+
+\section*{Competing interests} David Mytton has a financial interest in
+StackPath, LLC., an edge computing company, and was engaged by Uptime Institute
+as a Research Affiliate from December 2020.
+
+%\bibliographystyle{naturemag}
+%\bibliography{references}
+
+%TC:endignore
+
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlpgraphicx.styrefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{cisco_cisco_2020}
+\bibinfo{author}{Cisco}.
+\newblock \bibinfo{title}{Cisco {Annual} {Internet} {Report} (2018–2023)
+  {White} {Paper}} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.cisco.com/c/en/us/solutions/collateral/executive-perspectives/annual-internet-report/white-paper-c11-741490.html}.
+
+\bibitem{kamiya_data_2020}
+\bibinfo{author}{Kamiya, G.}
+\newblock \bibinfo{title}{Data {Centres} and {Data} {Transmission} {Networks}
+  – {Analysis}} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.iea.org/reports/data-centres-and-data-transmission-networks}.
+
+\bibitem{ganeshalingam_shining_2017}
+\bibinfo{author}{Ganeshalingam, M.}, \bibinfo{author}{Shehabi, A.} \&
+  \bibinfo{author}{Desroches, L.-B.}
+\newblock \bibinfo{title}{Shining a {Light} on {Small} {Data} {Centers} in the
+  {U}.{S}.}
+\newblock \bibinfo{type}{Tech. Rep.} \bibinfo{number}{LBNL-2001025},
+  \bibinfo{institution}{Lawrence Berkeley National Lab},
+  \bibinfo{address}{Berkeley, United States} (\bibinfo{year}{2017}).
+\newblock \urlprefix\url{https://escholarship.org/uc/item/8dh8j3kq}.
+
+\bibitem{shehabi_united_2016}
+\bibinfo{author}{Shehabi, A.} \emph{et~al.}
+\newblock \bibinfo{title}{United {States} {Data} {Center} {Energy} {Usage}
+  {Report}}.
+\newblock \bibinfo{type}{Tech. Rep.} \bibinfo{number}{LBNL-1005775},
+  \bibinfo{institution}{Lawrence Berkeley National Laboratory},
+  \bibinfo{address}{California} (\bibinfo{year}{2016}).
+\newblock \urlprefix\url{http://www.osti.gov/servlets/purl/1372902/}.
+
+\bibitem{us_epa_green_2020}
+\bibinfo{author}{EPA, U.}
+\newblock \bibinfo{title}{Green {Power} {Partnership} {National} {Top} 100}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.epa.gov/greenpower/green-power-partnership-national-top-100}.
+
+\bibitem{masanet_recalibrating_2020}
+\bibinfo{author}{Masanet, E.}, \bibinfo{author}{Shehabi, A.},
+  \bibinfo{author}{Lei, N.}, \bibinfo{author}{Smith, S.} \&
+  \bibinfo{author}{Koomey, J.}
+\newblock \bibinfo{title}{Recalibrating global data center energy-use
+  estimates}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{367}},
+  \bibinfo{pages}{984--986} (\bibinfo{year}{2020}).
+
+\bibitem{bashroush_beyond_2020}
+\bibinfo{author}{Bashroush, R.} \& \bibinfo{author}{Lawrence, A.}
+\newblock \bibinfo{title}{Beyond {PUE}: {Tackling} {IT}’s {Wasted}
+  {Terawatts}}.
+\newblock \bibinfo{type}{Tech. Rep.} \bibinfo{number}{UII-34},
+  \bibinfo{institution}{Uptime Institute} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://uptimeinstitute.com/beyond-pue-tackling-it%E2%80%99s-wasted-terawatts}.
+
+\bibitem{andrae_global_2015}
+\bibinfo{author}{Andrae, A. S.~G.} \& \bibinfo{author}{Edler, T.}
+\newblock \bibinfo{title}{On {Global} {Electricity} {Usage} of {Communication}
+  {Technology}: {Trends} to 2030}.
+\newblock \emph{\bibinfo{journal}{Challenges}} \textbf{\bibinfo{volume}{6}},
+  \bibinfo{pages}{117--157} (\bibinfo{year}{2015}).
+
+\bibitem{unesco_united_2020}
+\bibinfo{author}{UNESCO}.
+\newblock \emph{\bibinfo{title}{The {United} {Nations} world water development
+  report 2020: water and climate change}} (\bibinfo{publisher}{UNESCO},
+  \bibinfo{address}{Paris}, \bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://unesdoc.unesco.org/ark:/48223/pf0000372985.locale=en}.
+
+\bibitem{oecd_oecd_2012}
+\bibinfo{author}{OECD}.
+\newblock \emph{\bibinfo{title}{{OECD} {Environmental} {Outlook} to 2050}}
+  (\bibinfo{publisher}{OECD Publishing}, \bibinfo{year}{2012}).
+\newblock \urlprefix\url{https://doi.org/10.1787/9789264122246-en}.
+
+\bibitem{google_environmental_2020}
+\bibinfo{author}{Google}.
+\newblock \bibinfo{title}{Environmental {Report} 2019}.
+\newblock \bibinfo{type}{Tech. Rep.}, \bibinfo{institution}{Google}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://services.google.com/fh/files/misc/google_2019-environmental-report.pdf}.
+
+\bibitem{microsoft_2019_2020}
+\bibinfo{author}{Microsoft}.
+\newblock \bibinfo{title}{2019 {Data} {Factsheet}: {Environmental}
+  {Indicators}}.
+\newblock \bibinfo{type}{Tech. Rep.}, \bibinfo{institution}{Microsoft}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{http://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3455q}.
+
+\bibitem{amazon_reducing_2019}
+\bibinfo{author}{Amazon}.
+\newblock \bibinfo{title}{Reducing {Water} in {Data} {Centers}}
+  (\bibinfo{year}{2019}).
+\newblock
+  \urlprefix\url{https://sustainability.aboutamazon.com/environment/the-cloud/data-centers}.
+
+\bibitem{dieter_estimated_2018}
+\bibinfo{author}{Dieter, C.~A.} \emph{et~al.}
+\newblock \bibinfo{title}{Estimated use of water in the {United} {States} in
+  2015}.
+\newblock \bibinfo{type}{Report} \bibinfo{number}{1441},
+  \bibinfo{institution}{US Geological Survey}, \bibinfo{address}{Reston, VA}
+  (\bibinfo{year}{2018}).
+\newblock \urlprefix\url{https://doi.org/10.3133/cir1441}.
+
+\bibitem{fitzgerald_data_2015}
+\bibinfo{author}{FitzGerald, D.}
+\newblock \bibinfo{title}{Data {Centers} and {Hidden} {Water} {Use}}.
+\newblock \emph{\bibinfo{journal}{Wall Street Journal}}
+  (\bibinfo{year}{2015}).
+\newblock \urlprefix\url{https://www.wsj.com/articles/data-centers-1435168386}.
+
+\bibitem{digital_realty_environmental_2019}
+\bibinfo{author}{Realty, D.}
+\newblock \bibinfo{title}{Environmental {Performance}} (\bibinfo{year}{2019}).
+\newblock
+  \urlprefix\url{https://www.digitalrealty.com/environmental-social-and-governance-report-2019-highlights/environmental-performance}.
+
+\bibitem{pan_cooling_2018}
+\bibinfo{author}{Pan, S.-Y.}, \bibinfo{author}{Snyder, S.~W.},
+  \bibinfo{author}{Packman, A.~I.}, \bibinfo{author}{Lin, Y.~J.} \&
+  \bibinfo{author}{Chiang, P.-C.}
+\newblock \bibinfo{title}{Cooling water use in thermoelectric power generation
+  and its associated challenges for addressing water-energy nexus}.
+\newblock \emph{\bibinfo{journal}{Water-Energy Nexus}}
+  \textbf{\bibinfo{volume}{1}}, \bibinfo{pages}{26--41} (\bibinfo{year}{2018}).
+
+\bibitem{lee_regional_2018}
+\bibinfo{author}{Lee, U.}, \bibinfo{author}{Han, J.},
+  \bibinfo{author}{Elgowainy, A.} \& \bibinfo{author}{Wang, M.}
+\newblock \bibinfo{title}{Regional water consumption for hydro and thermal
+  electricity generation in the {United} {States}}.
+\newblock \emph{\bibinfo{journal}{Applied Energy}}
+  \textbf{\bibinfo{volume}{210}}, \bibinfo{pages}{12} (\bibinfo{year}{2018}).
+
+\bibitem{iea_electricity_2019}
+\bibinfo{author}{IEA}.
+\newblock \bibinfo{title}{Electricity generation by fuel and scenario,
+  2018-2040} (\bibinfo{year}{2019}).
+\newblock
+  \urlprefix\url{https://www.iea.org/data-and-statistics/charts/electricity-generation-by-fuel-and-scenario-2018-2040}.
+
+\bibitem{irena_renewable_2015}
+\bibinfo{author}{IRENA}.
+\newblock \bibinfo{title}{Renewable {Energy} in the {Water}, {Energy} and
+  {Food} {Nexus}}.
+\newblock \bibinfo{type}{Tech. Rep.}, \bibinfo{institution}{IRENA}
+  (\bibinfo{year}{2015}).
+\newblock
+  \urlprefix\url{https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2015/IRENA_Water_Energy_Food_Nexus_2015.pdf}.
+
+\bibitem{adams_forrester_2017}
+\bibinfo{author}{Adams, J.} \& \bibinfo{author}{Cser, A.}
+\newblock \bibinfo{title}{Forrester data: {Cloud} security solutions forecast,
+  2016 {To} 2021 (global)}.
+\newblock \bibinfo{type}{Tech. Rep.}, \bibinfo{institution}{Forrester}
+  (\bibinfo{year}{2017}).
+\newblock
+  \urlprefix\url{https://www.tatacommunications.com/wp-content/uploads/2019/02/Forrester-Report.pdf}.
+
+\bibitem{brady_case_2013}
+\bibinfo{author}{Brady, G.~A.}, \bibinfo{author}{Kapur, N.},
+  \bibinfo{author}{Summers, J.~L.} \& \bibinfo{author}{Thompson, H.~M.}
+\newblock \bibinfo{title}{A case study and critical assessment in calculating
+  power usage effectiveness for a data centre}.
+\newblock \emph{\bibinfo{journal}{Energy Conversion and Management}}
+  \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{155--161}
+  (\bibinfo{year}{2013}).
+
+\bibitem{iso_isoiec_nodate}
+\bibinfo{author}{{ISO}}.
+\newblock \bibinfo{title}{{ISO}/{IEC} 30134-2:2016} (\bibinfo{year}{2016}).
+\newblock \urlprefix\url{https://www.iso.org/standard/63451.html}.
+
+\bibitem{google_efficiency_2020}
+\bibinfo{author}{Google}.
+\newblock \bibinfo{title}{Efficiency – {Data} {Centers}}
+  (\bibinfo{year}{2020}).
+\newblock \urlprefix\url{https://www.google.com/about/datacenters/efficiency/}.
+
+\bibitem{lawrence_data_2020}
+\bibinfo{author}{Lawrence, A.}
+\newblock \bibinfo{title}{Data center {PUEs} flat since 2013}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://journal.uptimeinstitute.com/data-center-pues-flat-since-2013/}.
+
+\bibitem{shehabi_data_2018}
+\bibinfo{author}{Shehabi, A.}, \bibinfo{author}{Smith, S.~J.},
+  \bibinfo{author}{Masanet, E.} \& \bibinfo{author}{Koomey, J.}
+\newblock \bibinfo{title}{Data center growth in the {United} {States}:
+  decoupling the demand for services from electricity use}.
+\newblock \emph{\bibinfo{journal}{Environmental Research Letters}}
+  \textbf{\bibinfo{volume}{13}}, \bibinfo{pages}{124030}
+  (\bibinfo{year}{2018}).
+
+\bibitem{iyengar_reducing_2010}
+\bibinfo{author}{Iyengar, M.}, \bibinfo{author}{Schmidt, R.} \&
+  \bibinfo{author}{Caricari, J.}
+\newblock \bibinfo{title}{Reducing energy usage in data centers through control
+  of {Room} {Air} {Conditioning} units}.
+\newblock In \emph{\bibinfo{booktitle}{2010 12th {IEEE} {Intersociety}
+  {Conference} on {Thermal} and {Thermomechanical} {Phenomena} in {Electronic}
+  {Systems}}}, \bibinfo{pages}{1--11} (\bibinfo{year}{2010}).
+
+\bibitem{ebrahimi_review_2014}
+\bibinfo{author}{Ebrahimi, K.}, \bibinfo{author}{Jones, G.~F.} \&
+  \bibinfo{author}{Fleischer, A.~S.}
+\newblock \bibinfo{title}{A review of data center cooling technology, operating
+  conditions and the corresponding low-grade waste heat recovery
+  opportunities}.
+\newblock \emph{\bibinfo{journal}{Renewable and Sustainable Energy Reviews}}
+  \textbf{\bibinfo{volume}{31}}, \bibinfo{pages}{622--638}
+  (\bibinfo{year}{2014}).
+
+\bibitem{capozzoli_cooling_2015}
+\bibinfo{author}{Capozzoli, A.} \& \bibinfo{author}{Primiceri, G.}
+\newblock \bibinfo{title}{Cooling {Systems} in {Data} {Centers}: {State} of
+  {Art} and {Emerging} {Technologies}}.
+\newblock \emph{\bibinfo{journal}{Energy Procedia}}
+  \textbf{\bibinfo{volume}{83}}, \bibinfo{pages}{484--493}
+  (\bibinfo{year}{2015}).
+
+\bibitem{miller_energy_2011}
+\bibinfo{author}{Miller, C.}
+\newblock \bibinfo{title}{Energy {Efficiency} {Guide}: {Data} {Center}
+  {Temperature}} (\bibinfo{year}{2011}).
+\newblock
+  \urlprefix\url{https://www.datacenterknowledge.com/archives/2011/03/10/energy-efficiency-guide-data-center-temperature}.
+
+\bibitem{miller_intel_2008}
+\bibinfo{author}{Miller, R.}
+\newblock \bibinfo{title}{Intel: {Servers} {Do} {Fine} {With} {Outside} {Air}}
+  (\bibinfo{year}{2008}).
+\newblock
+  \urlprefix\url{https://www.datacenterknowledge.com/archives/2008/09/18/intel-servers-do-fine-with-outside-air}.
+
+\bibitem{frizziero_rethinking_2016}
+\bibinfo{author}{Frizziero, M.}
+\newblock \bibinfo{title}{Rethinking {Chilled} {Water} {Temps} {Bring} {Big}
+  {Savings} in {Data} {Center} {Cooling}} (\bibinfo{year}{2016}).
+\newblock
+  \urlprefix\url{https://blog.se.com/datacenter/2016/08/17/water-temperatures-data-center-cooling/}.
+
+\bibitem{heslin_ignore_2016}
+\bibinfo{author}{Heslin, K.}
+\newblock \bibinfo{title}{Ignore {Data} {Center} {Water} {Consumption} at
+  {Your} {Own} {Peril}} (\bibinfo{year}{2016}).
+\newblock
+  \urlprefix\url{https://journal.uptimeinstitute.com/dont-ignore-water-consumption/}.
+
+\bibitem{frizziero_why_2018}
+\bibinfo{author}{Frizziero, M.}
+\newblock \bibinfo{title}{Why {Water} {Use} is a {Key} {Consideration} {When}
+  {Cooling} {Your} {Data} {Center}} (\bibinfo{year}{2018}).
+\newblock
+  \urlprefix\url{https://blog.se.com/datacenter/2018/05/10/why-water-use-consideration-cooling-data-center/}.
+
+\bibitem{miller_googles_2009}
+\bibinfo{author}{Miller, R.}
+\newblock \bibinfo{title}{Google's {Chiller}-less {Data} {Center}}
+  (\bibinfo{year}{2009}).
+\newblock
+  \urlprefix\url{https://www.datacenterknowledge.com/archives/2009/07/15/googles-chiller-less-data-center}.
+
+\bibitem{miller_microsofts_2009}
+\bibinfo{author}{Miller, R.}
+\newblock \bibinfo{title}{Microsoft's {Chiller}-less {Data} {Center}}
+  (\bibinfo{year}{2009}).graphicx.sty
+\newblock
+  \urlprefix\url{https://www.datacenterknowledge.com/archives/2009/09/24/microsofts-chiller-less-data-center}.
+
+\bibitem{david_experimental_2012}
+\bibinfo{author}{David, M.~P.} \emph{et~al.}
+\newblock \bibinfo{title}{Experimental characterization of an energy efficient
+  chiller-less data center test facility with warm water cooled servers}.
+\newblock In \emph{\bibinfo{booktitle}{2012 28th {Annual} {IEEE}
+  {Semiconductor} {Thermal} {Measurement} and {Management} {Symposium}
+  ({SEMI}-{THERM})}}, \bibinfo{pages}{232--237} (\bibinfo{publisher}{IEEE},
+  \bibinfo{address}{San Jose, CA, USA}, \bibinfo{year}{2012}).
+
+\bibitem{patterson_water_2011}
+\bibinfo{author}{Patterson, M.}
+\newblock \bibinfo{title}{Water {Usage} {Effectiveness} ({WUE}): {A} {Green}
+  {Grid} {Data} {Center} {Sustainability} {Metric}}.
+\newblock \bibinfo{type}{Tech. Rep.} \bibinfo{number}{WP35},
+  \bibinfo{institution}{The Green Grid} (\bibinfo{year}{2011}).
+\newblock
+  \urlprefix\url{https://www.thegreengrid.org/en/resources/library-and-tools/238-Water-Usage-Effectiveness-(WUE):-A-Green-Grid-Data-Center-Sustainability-Metric-}.
+
+\bibitem{sharma_water_2009}
+\bibinfo{author}{Sharma, R.}, \bibinfo{author}{Shah, A.},
+  \bibinfo{author}{Bash, C.}, \bibinfo{author}{Christian, T.} \&
+  \bibinfo{author}{Patel, C.}
+\newblock \bibinfo{title}{Water efficiency management in datacenters: {Metrics}
+  and methodology}.
+\newblock In \emph{\bibinfo{booktitle}{2009 {IEEE} {International} {Symposium}
+  on {Sustainable} {Systems} and {Technology}}}, \bibinfo{pages}{1--6}
+  (\bibinfo{year}{2009}).
+\newblock \bibinfo{note}{ISSN: 2378-7260}.
+
+\bibitem{torcellini_consumptive_2003}
+\bibinfo{author}{Torcellini, P.}, \bibinfo{author}{Long, N.} \&
+  \bibinfo{author}{Judkoff, R.}
+\newblock \bibinfo{title}{Consumptive {Water} {Use} for {U}.{S}. {Power}
+  {Production}}.
+\newblock \bibinfo{type}{Tech. Rep.} \bibinfo{number}{NREL/TP-550-33905,
+  15005918}, \bibinfo{institution}{National Renewable Energy Laboratory}
+  (\bibinfo{year}{2003}).
+\newblock \urlprefix\url{http://www.osti.gov/servlets/purl/15005918/}.
+
+\bibitem{macknick_operational_2012}
+\bibinfo{author}{Macknick, J.}, \bibinfo{author}{Newmark, R.},
+  \bibinfo{author}{Heath, G.} \& \bibinfo{author}{Hallett, K.~C.}
+\newblock \bibinfo{title}{Operational water consumption and withdrawal factors
+  for electricity generating technologies: a review of existing literature}.
+\newblock \emph{\bibinfo{journal}{Environmental Research Letters}}
+  \textbf{\bibinfo{volume}{7}}, \bibinfo{pages}{045802} (\bibinfo{year}{2012}).
+
+\bibitem{peck_quantification_2017}
+\bibinfo{author}{Peck, J.~J.} \& \bibinfo{author}{Smith, A.~D.}
+\newblock \bibinfo{title}{Quantification and regional comparison of water use
+  for power generation: {A} {California} {ISO} case study}.
+\newblock \emph{\bibinfo{journal}{Energy Reports}}
+  \textbf{\bibinfo{volume}{3}}, \bibinfo{pages}{22--28} (\bibinfo{year}{2017}).
+
+\bibitem{facebook_lulea_2020}
+\bibinfo{author}{Facebook}.
+\newblock \bibinfo{title}{Lulea {Data} {Center}} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.facebook.com/LuleaDataCenter/app/115276998849912}.
+
+\bibitem{facebook_forest_2020}
+\bibinfo{author}{Facebook}.
+\newblock \bibinfo{title}{Forest {City} {Data} {Center}}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.facebook.com/ForestCityDataCenter/app/288655784601722}.
+
+\bibitem{facebook_prineville_2020}
+\bibinfo{author}{Facebook}.
+\newblock \bibinfo{title}{Prineville {Data} {Center}} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.facebook.com/PrinevilleDataCenter/app/399244020173259}.
+
+\bibitem{flexera_rightscale_2019}
+\bibinfo{author}{Flexera}.
+\newblock \bibinfo{title}{{RightScale} 2019 {State} of the {Cloud} {Report}}.
+\newblock \bibinfo{type}{Tech. Rep.}, \bibinfo{institution}{Flexera, Inc.}
+  (\bibinfo{year}{2019}).
+\newblock
+  \urlprefix\url{https://resources.flexera.com/web/media/documents/rightscale-2019-state-of-the-cloud-report-from-flexera.pdf}.
+
+\bibitem{mytton_assessing_2020}
+\bibinfo{author}{Mytton, D.}
+\newblock \bibinfo{title}{Assessing the suitability of the {Greenhouse} {Gas}
+  {Protocol} for calculation of emissions from public cloud computing
+  workloads}.
+\newblock \emph{\bibinfo{journal}{Journal of Cloud Computing}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{45} (\bibinfo{year}{2020}).
+
+\bibitem{mytton_fighting_2020}
+\bibinfo{author}{Mytton, D.}
+\newblock \bibinfo{title}{Fighting over who has the greenest public cloud}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://davidmytton.blog/fighting-over-who-has-the-greenest-public-cloud/}.
+
+\bibitem{sattiraju_google_2020}
+\bibinfo{author}{Sattiraju, N.}
+\newblock \bibinfo{title}{Google {Data} {Centers}’ {Secret} {Cost}:
+  {Billions} of {Gallons} of {Water}}.
+\newblock \emph{\bibinfo{journal}{Bloomberg.com}}  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.bloomberg.com/news/features/2020-04-01/how-much-water-do-google-data-centers-use-billions-of-gallons}.
+
+\bibitem{petersen_googles_2017}
+\bibinfo{author}{Petersen, B.}
+\newblock \bibinfo{title}{Google's controversial groundwater withdrawal sparks
+  question of who owns {South} {Carolina} water} (\bibinfo{year}{2017}).
+\newblock
+  \urlprefix\url{https://www.postandcourier.com/news/googles-controversial-groundwater-withdrawal-sparks-question-of-who-owns-south-carolina-water/article_bed9179c-1baa-11e7-983e-03d6b33a01e7.html}.
+
+\bibitem{mccammon_google_2017}
+\bibinfo{author}{McCammon, S.}
+\newblock \bibinfo{title}{Google {Moves} {In} {And} {Wants} {To} {Pump} 1.5
+  {Million} {Gallons} {Of} {Water} {Per} {Day}} (\bibinfo{year}{2017}).
+\newblock
+  \urlprefix\url{https://www.npr.org/2017/05/08/527214026/google-moves-in-and-wants-to-pump-1-5-million-gallons-of-water-per-day}.
+
+\bibitem{brown_helping_2012}
+\bibinfo{author}{Brown, J.}
+\newblock \bibinfo{title}{Helping the {Hooch} with water conservation at our
+  {Douglas} {County} data center} (\bibinfo{year}{2012}).
+\newblock
+  \urlprefix\url{https://green.googleblog.com/2012/03/helping-hooch-with-water-conservation.html}.
+
+\bibitem{pichai_our_2020}
+\bibinfo{author}{Pichai, S.}
+\newblock \bibinfo{title}{Our third decade of climate action: {Realizing} a
+  carbon-free future} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://blog.google/outreach-initiatives/sustainability/our-third-decade-climate-action-realizing-carbon-free-future/}.
+
+\bibitem{amazon_amazon_2019}
+\bibinfo{author}{Amazon}.
+\newblock \bibinfo{title}{Amazon {Co}-founds {The} {Climate} {Pledge},
+  {Setting} {Goal} to {Meet} the {Paris} {Agreement} 10 {Years} {Early}}
+  (\bibinfo{year}{2019}).
+\newblock
+  \urlprefix\url{https://press.aboutamazon.com/news-releases/news-release-details/amazon-co-founds-climate-pledge-setting-goal-meet-paris/}.
+
+\bibitem{amazon_amazon_2020}
+\bibinfo{author}{Amazon}.
+\newblock \bibinfo{title}{Amazon {Announces} \$2 {Billion} {Climate} {Pledge}
+  {Fund} to {Invest} in {Companies} {Building} {Products}, {Services}, and
+  {Technologies} to {Decarbonize} the {Economy} and {Protect} the {Planet}}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://press.aboutamazon.com/news-releases/news-release-details/amazon-announces-2-billion-climate-pledge-fund-invest-companies/}.
+
+\bibitem{smith_microsoft_2020}
+\bibinfo{author}{Smith, B.}
+\newblock \bibinfo{title}{Microsoft will replenish more water than it consumes
+  by 2030} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://blogs.microsoft.com/blog/2020/09/21/microsoft-will-replenish-more-water-than-it-consumes-by-2030/}.
+
+\bibitem{judge_google_2019}
+\bibinfo{author}{Judge, P.}
+\newblock \bibinfo{title}{Google to invest \$670m to build a second data center
+  in {Hamina}, {Finland}} (\bibinfo{year}{2019}).
+\newblock
+  \urlprefix\url{https://wwwgraphicx.sty.datacenterdynamics.com/en/news/google-invest-670m-to-build-second-facility-hamina-finland-/}.
+
+\bibitem{levy_where_2012}
+\bibinfo{author}{Levy, S.}
+\newblock \bibinfo{title}{Where {Servers} {Meet} {Saunas}: {A} {Visit} to
+  {Google}'s {Finland} {Data} {Center}}.
+\newblock \emph{\bibinfo{journal}{Wired}}  (\bibinfo{year}{2012}).
+\newblock
+  \urlprefix\url{https://www.wired.com/2012/10/google-finland-data-center-2/}.
+
+\bibitem{roach_microsoft_2020}
+\bibinfo{author}{Roach, J.}
+\newblock \bibinfo{title}{Microsoft finds underwater datacenters are reliable,
+  practical and use energy sustainably} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://news.microsoft.com/innovation-stories/project-natick-underwater-datacenter/}.
+
+\bibitem{moazamigoodarzi_influence_2019}
+\bibinfo{author}{Moazamigoodarzi, H.}, \bibinfo{author}{Tsai, P.~J.},
+  \bibinfo{author}{Pal, S.}, \bibinfo{author}{Ghosh, S.} \&
+  \bibinfo{author}{Puri, I.~K.}
+\newblock \bibinfo{title}{Influence of cooling architecture on data center
+  power consumption}.
+\newblock \emph{\bibinfo{journal}{Energy}} \textbf{\bibinfo{volume}{183}},
+  \bibinfo{pages}{525--535} (\bibinfo{year}{2019}).
+
+\bibitem{hamburgen_modular_2012}
+\bibinfo{author}{Hamburgen, W.} \emph{et~al.}
+\newblock \bibinfo{title}{Modular data center cooling} (\bibinfo{year}{2012}).
+\newblock \urlprefix\url{https://patents.google.com/patent/US8320125B1/en}.
+
+\bibitem{russinovich_inside_2020}
+\bibinfo{author}{Russinovich, M.}
+\newblock \bibinfo{title}{Inside {Azure} datacenter architecture with {Mark}
+  {Russinovich} {\textbar} {BRK3097}} (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://www.youtube.com/watch?v=X-0V6bYfTpA&feature=youtu.be&t=1390}.
+
+\bibitem{meijer_cooling_2010}
+\bibinfo{author}{Meijer, G.~I.}
+\newblock \bibinfo{title}{Cooling {Energy}-{Hungry} {Data} {Centers}}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{328}},
+  \bibinfo{pages}{318--319} (\bibinfo{year}{2010}).
+
+\bibitem{ellsworth_overview_2012}
+\bibinfo{author}{Ellsworth, M.~J.} \emph{et~al.}
+\newblock \bibinfo{title}{An {Overview} of the {IBM} {Power} 775
+  {Supercomputer} {Water} {Cooling} {System}}.
+\newblock \emph{\bibinfo{journal}{Journal of Electronic Packaging}}
+  \textbf{\bibinfo{volume}{134}} (\bibinfo{year}{2012}).
+
+\bibitem{ellsworth_energy_2010}
+\bibinfo{author}{Ellsworth, M.~J.} \& \bibinfo{author}{Iyengar, M.~K.}
+\newblock \bibinfo{title}{Energy {Efficiency} {Analyses} and {Comparison} of
+  {Air} and {Water} {Cooled} {High} {Performance} {Servers}}.
+\newblock In \emph{\bibinfo{booktitle}{{ASME} 2009 {InterPACK} {Conference}}},
+  \bibinfo{pages}{907--914} (\bibinfo{publisher}{American Society of Mechanical
+  Engineers Digital Collection}, \bibinfo{year}{2010}).
+
+\bibitem{evans_deepmind_2016}
+\bibinfo{author}{Evans, R.} \& \bibinfo{author}{Gao, J.}
+\newblock \bibinfo{title}{{DeepMind} {AI} {Reduces} {Google} {Data} {Centre}
+  {Cooling} {Bill} by 40\%} (\bibinfo{year}{2016}).
+\newblock
+  \urlprefix\url{https://deepmind.com/blog/article/deepmind-ai-reduces-google-data-centre-cooling-bill-40}.
+
+\bibitem{gao_machine_2017}
+\bibinfo{author}{Gao, J.}
+\newblock \bibinfo{title}{Machine {Learning} {Applications} for {Data} {Center}
+  {Optimization}}.
+\newblock \bibinfo{type}{Tech. Rep.}, \bibinfo{institution}{Google}
+  (\bibinfo{year}{2017}).
+\newblock
+  \urlprefix\url{https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/42542.pdf}.
+
+\bibitem{hamilton_data_2014}
+\bibinfo{author}{Hamilton, J.}
+\newblock \bibinfo{title}{Data {Center} {Cooling} {Done} {Differently} –
+  {Perspectives}} (\bibinfo{year}{2014}).
+\newblock
+  \urlprefix\url{https://perspectives.mvdirona.com/2014/08/data-center-cooling-done-differently/}.
+
+\bibitem{google_locations_2020}
+\bibinfo{author}{Google}.
+\newblock \bibinfo{title}{Google {Data} {Center} {Locations}}
+  (\bibinfo{year}{2020}).
+\newblock \urlprefix\url{https://www.google.com/about/datacenters/locations/}.
+
+\bibitem{google_edge_2020}
+\bibinfo{author}{Google}.
+\newblock \bibinfo{title}{Google {Edge} {Network} {Infrastructure}}
+  (\bibinfo{year}{2020}).
+\newblock \urlprefix\url{https://peering.google.com/#/infrastructure}.
+
+\bibitem{loh_click_2019}
+\bibinfo{author}{Loh, F.} \emph{et~al.}
+\newblock \bibinfo{title}{From {Click} to {Playback}: {A} {Dataset} to {Study}
+  the {Response} {Time} of {Mobile} {YouTube}}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 10th {ACM}
+  {Multimedia} {Systems} {Conference}}}, {MMSys} 19, \bibinfo{pages}{267--272}
+  (\bibinfo{publisher}{Association for Computing Machinery},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{year}{2019}).
+
+\bibitem{google_pop_2011}
+\bibinfo{author}{Google}.
+\newblock \bibinfo{title}{Google’s {Green} {Data} {Centers}: {Network} {POP}
+  {Case} {Study}} (\bibinfo{year}{2011}).
+\newblock
+  \urlprefix\url{https://static.googleusercontent.com/media/www.google.com/en//corporate/datacenter/dc-best-practices-google.pdf}.
+
+\bibitem{mytton_hiding_2020}
+\bibinfo{author}{Mytton, D.}
+\newblock \bibinfo{title}{Hiding greenhouse gas emissions in the cloud}.
+\newblock \emph{\bibinfo{journal}{Nature Climate Change}}
+  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{701--701}
+  (\bibinfo{year}{2020}).
+
+\bibitem{joppa_progress_2020}
+\bibinfo{author}{Joppa, L.}
+\newblock \bibinfo{title}{Progress on our goal to be carbon negative by 2030}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://blogs.microsoft.com/on-the-issues/2020/07/21/carbon-negative-transform-to-net-zero/}.
+
+\bibitem{european_commission_eu_2020}
+\bibinfo{author}{Commission, E.}
+\newblock \bibinfo{title}{{EU} taxonomy for sustainable activities}
+  (\bibinfo{year}{2020}).
+\newblock
+  \urlprefix\url{https://ec.europa.eu/info/business-economy-euro/banking-and-finance/sustainable-finance/eu-taxonomy-sustainable-activities_en}.
+
+\bibitem{uk_government_streamlined_2018}
+\bibinfo{author}{Government, U.}
+\newblock \bibinfo{title}{Streamlined energy and carbon reporting}
+  (\bibinfo{year}{2018}).
+\newblock
+  \urlprefix\url{https://www.gov.uk/government/consultations/streamlined-energy-and-carbon-reporting}.
+
+\bibitem{van_de_voort_analysis_2017}
+\bibinfo{author}{van~de Voort, T.}, \bibinfo{author}{Zavrel, V.},
+  \bibinfo{author}{Torrens~Galdiz, I.} \& \bibinfo{author}{Hensen, J.}
+\newblock \bibinfo{title}{Analysis of performance metrics for data center
+  efficiency – should the {Power} {Utilization} {Effectiveness} {PUE} still
+  be used as the main indicator? ({Part} 1)}.
+\newblock \emph{\bibinfo{journal}{REHVA Journal}}
+  \textbf{\bibinfo{volume}{01/2017}}, \bibinfo{pages}{5--11}
+  (\bibinfo{year}{2017}).
+\newblock
+  \urlprefix\url{https://www.rehva.eu/rehva-journal/chapter/analysis-of-performance-metrics-for-data-center-efficiency-should-the-power-utilization-effectiveness-pue-still-be-used-as-the-main-indicator-part-1}.
+
+\bibitem{zoie_analysis_2017}
+\bibinfo{author}{Zoie, R.~C.}, \bibinfo{author}{Mihaela, R.~D.} \&
+  \bibinfo{author}{Alexandru, S.}
+\newblock \bibinfo{title}{An analysis of the power usage effectiveness metric
+  in data centers}.
+\newblock In \emph{\bibinfo{booktitle}{2017 5th {International} {Symposium} on
+  {Electrical} and {Electronics} {Engineering} ({ISEEE})}},
+  \bibinfo{pages}{1--6} (\bibinfo{year}{2017}).
+
+\bibitem{yu_drivers_2020}
+\bibinfo{author}{Yu, H.-C.}, \bibinfo{author}{Kuo, L.} \& \bibinfo{author}{Ma,
+  B.}
+\newblock \bibinfo{title}{The {Drivers} of {Corporate} {Water} {Disclosure} in
+  {Enhancing} {Information} {Transparency}}.
+\newblock \emph{\bibinfo{journal}{Sustainability}}
+  \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{385} (\bibinfo{year}{2020}).
+
+\end{thebibliography}
+
+\section*{Figures}
+
+\begin{figure}
+\caption{
+    \textbf{Water consumption in billions of litres by Fiscal Year (FY) for cloud
+    vendors Google \cite{google_environmental_2020} and Microsoft
+    \cite{microsoft_2019_2020}.} Amazon does not publish water figures
+    \cite{amazon_reducing_2019}. At time of writing, Google had not published
+    its environmental report for FY19. Microsoft notes 50\% of the change from
+    FY17 to FY18 is from a change in methodology, the other 50\% coming from
+    organisational growth.
+    }
+\label{figure:cloud-water-use}
+\end{figure}
+
+\begin{figure}
+\caption{
+    \textbf{Water source by year for Digital Realty, a large global data centre
+    operator.} Consumption from potable water was 64\% (2017), 65\% (2018),
+    and 57\% (2019) \cite{digital_realty_environmental_2019}.
+}
+\label{figure:digital-realty-water-source}
+\end{figure}
+
+\end{document}
